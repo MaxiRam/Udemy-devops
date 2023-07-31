@@ -10,6 +10,6 @@ spec:
     port: 5432
     nodePort: 30432
   #type: LoadBalancer
-  type: nodePort
+  type: NodePort
   selector: 
     app: postgres
