@@ -1,0 +1,21 @@
+# persistent volume (PV) is a piece of storage that have an independent lifecycle from pods
+# these preserve data through restarting, rescheduling and even deleting pods
+# PersistenceVolumeCallin is a request for storage by the user that can be fullfilled by the PV
+kind: PersistentVolume
+# version of ApiServer con control panel node (/api/v1) check using: kubectl api-versions
+apiVersion: v1
+metadata:
+  name: postgres-volume
+  labels:
+    # it is a plugin supports many like AWS EBS, Azure disk, etc. local_ local storage devices mounted on nodes.
+    type: local
+    app: postgres
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 5Gi
+  # many pods scheduled on different nodes can read and write
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/data/"

@@ -1,0 +1,14 @@
+# Is a request of resource from a pod
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: postgres-claim
+  labels:
+    app: postgres
+spec:
+  storageClasName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 2Gi
