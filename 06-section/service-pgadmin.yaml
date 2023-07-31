@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: pgadmin-service
+  labels:
+    app: pgadmin
+spec:
+  selector:
+    app: pgadmin
+  type: nodePort
+  ports:
+    port: 80
+    nodePort: 30200
